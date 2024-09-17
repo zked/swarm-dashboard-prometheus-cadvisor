@@ -1,0 +1,1009 @@
+{
+  "name": "test",
+  "description": "This quickstart was built and tested based on Traefik metrics sent to New Relic using Prometheus Agent or Prometheus server",
+  "permissions": "PUBLIC_READ_ONLY",
+  "pages": [
+    {
+      "name": "Traefik Metrics",
+      "description": null,
+      "widgets": [
+        {
+          "title": "",
+          "layout": {
+            "column": 1,
+            "row": 1,
+            "width": 3,
+            "height": 1
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.markdown"
+          },
+          "rawConfiguration": {
+            "text": "| SWARM INFO |\n| :-: |"
+          }
+        },
+        {
+          "title": "",
+          "layout": {
+            "column": 4,
+            "row": 1,
+            "width": 1,
+            "height": 9
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.markdown"
+          },
+          "rawConfiguration": {
+            "text": " "
+          }
+        },
+        {
+          "title": "",
+          "layout": {
+            "column": 5,
+            "row": 1,
+            "width": 8,
+            "height": 1
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.markdown"
+          },
+          "rawConfiguration": {
+            "text": "| FILTERING SECTION |\n| :-: |"
+          }
+        },
+        {
+          "title": "Prometheus Server",
+          "layout": {
+            "column": 1,
+            "row": 2,
+            "width": 1,
+            "height": 1
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.billboard"
+          },
+          "rawConfiguration": {
+            "facet": {
+              "showOtherSeries": false
+            },
+            "nrqlQueries": [
+              {
+                "accountIds": [
+                  yyyyy
+                ],
+                "query": "FROM Metric select uniqueCount(prometheus_server) as 'Prometheus instance'    since 1 day ago"
+              }
+            ],
+            "platformOptions": {
+              "ignoreTimeRange": false
+            }
+          }
+        },
+        {
+          "title": "Nodes",
+          "layout": {
+            "column": 2,
+            "row": 2,
+            "width": 1,
+            "height": 1
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.billboard"
+          },
+          "rawConfiguration": {
+            "facet": {
+              "showOtherSeries": false
+            },
+            "nrqlQueries": [
+              {
+                "accountIds": [
+                  yyyyy
+                ],
+                "query": "FROM Metric select uniqueCount(container_label_com_docker_swarm_node_id) as '# of nodes'  where metricName = 'container_cpu_usage_seconds_total'  since 1 day ago"
+              }
+            ],
+            "platformOptions": {
+              "ignoreTimeRange": false
+            }
+          }
+        },
+        {
+          "title": "Namespaces",
+          "layout": {
+            "column": 3,
+            "row": 2,
+            "width": 1,
+            "height": 2
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.billboard"
+          },
+          "rawConfiguration": {
+            "facet": {
+              "showOtherSeries": false
+            },
+            "nrqlQueries": [
+              {
+                "accountIds": [
+                  yyyyy
+                ],
+                "query": "FROM Metric select uniqueCount(container_label_com_docker_stack_namespace) as '# of Stack Namespaces'    since 1 day ago"
+              }
+            ],
+            "platformOptions": {
+              "ignoreTimeRange": false
+            }
+          }
+        },
+        {
+          "title": "Filter Prometheus Server",
+          "layout": {
+            "column": 5,
+            "row": 2,
+            "width": 2,
+            "height": 4
+          },
+          "linkedEntityGuids": [
+            "MzE1NTY1fFZJWnxEQVNIQk9BUkR8MjAwNTIxODY"
+          ],
+          "visualization": {
+            "id": "viz.table"
+          },
+          "rawConfiguration": {
+            "facet": {
+              "showOtherSeries": false
+            },
+            "nrqlQueries": [
+              {
+                "accountIds": [
+                  yyyyy
+                ],
+                "query": "FROM Metric select uniqueCount(prometheus_server) as 'Prometheus instance'  facet prometheus_server  since 1 day ago"
+              }
+            ],
+            "platformOptions": {
+              "ignoreTimeRange": false
+            }
+          }
+        },
+        {
+          "title": "Filter Nodes",
+          "layout": {
+            "column": 7,
+            "row": 2,
+            "width": 3,
+            "height": 4
+          },
+          "linkedEntityGuids": [
+            "MzE1NTY1fFZJWnxEQVNIQk9BUkR8MjAwNTIxODY"
+          ],
+          "visualization": {
+            "id": "viz.table"
+          },
+          "rawConfiguration": {
+            "facet": {
+              "showOtherSeries": false
+            },
+            "nrqlQueries": [
+              {
+                "accountIds": [
+                  yyyyy
+                ],
+                "query": "FROM Metric select uniqueCount(container_label_com_docker_swarm_node_id) as '# of nodes'  where metricName = 'container_cpu_usage_seconds_total' facet container_label_com_docker_swarm_node_id  since 1 day ago limit max"
+              }
+            ],
+            "platformOptions": {
+              "ignoreTimeRange": false
+            }
+          }
+        },
+        {
+          "title": "Filter Namespaces",
+          "layout": {
+            "column": 10,
+            "row": 2,
+            "width": 3,
+            "height": 4
+          },
+          "linkedEntityGuids": [
+            "MzE1NTY1fFZJWnxEQVNIQk9BUkR8MjAwNTIxODY"
+          ],
+          "visualization": {
+            "id": "viz.table"
+          },
+          "rawConfiguration": {
+            "facet": {
+              "showOtherSeries": false
+            },
+            "nrqlQueries": [
+              {
+                "accountIds": [
+                  yyyyy
+                ],
+                "query": "FROM Metric select uniqueCount(container_label_com_docker_stack_namespace) as '# of Stack Namespaces'  facet container_label_com_docker_stack_namespace  since 1 day ago limit max"
+              }
+            ],
+            "platformOptions": {
+              "ignoreTimeRange": false
+            }
+          }
+        },
+        {
+          "title": "Services",
+          "layout": {
+            "column": 1,
+            "row": 3,
+            "width": 1,
+            "height": 1
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.billboard"
+          },
+          "rawConfiguration": {
+            "facet": {
+              "showOtherSeries": false
+            },
+            "nrqlQueries": [
+              {
+                "accountIds": [
+                  yyyyy
+                ],
+                "query": "FROM Metric select uniqueCount(container_label_com_docker_swarm_service_name) as '# of Services' "
+              }
+            ],
+            "platformOptions": {
+              "ignoreTimeRange": false
+            }
+          }
+        },
+        {
+          "title": "Tasks",
+          "layout": {
+            "column": 2,
+            "row": 3,
+            "width": 1,
+            "height": 1
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.billboard"
+          },
+          "rawConfiguration": {
+            "facet": {
+              "showOtherSeries": false
+            },
+            "nrqlQueries": [
+              {
+                "accountIds": [
+                  yyyyy
+                ],
+                "query": "FROM Metric select uniqueCount(container_label_com_docker_swarm_task_name) as '# of Tasks'  where prometheus_server = 'prometheus-stage-cluster' "
+              }
+            ],
+            "platformOptions": {
+              "ignoreTimeRange": false
+            }
+          }
+        },
+        {
+          "title": "# of Tasks per Service",
+          "layout": {
+            "column": 1,
+            "row": 4,
+            "width": 3,
+            "height": 3
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.stacked-bar"
+          },
+          "rawConfiguration": {
+            "facet": {
+              "showOtherSeries": false
+            },
+            "legend": {
+              "enabled": true
+            },
+            "nrqlQueries": [
+              {
+                "accountIds": [
+                  yyyyy
+                ],
+                "query": "FROM Metric select uniqueCount(container_label_com_docker_swarm_task_name)  where prometheus_server = 'prometheus-stage-cluster' and metricName = 'container_last_seen' facet container_label_com_docker_swarm_service_name limit max TIMESERIES "
+              }
+            ],
+            "platformOptions": {
+              "ignoreTimeRange": false
+            }
+          }
+        },
+        {
+          "title": "Filter Services",
+          "layout": {
+            "column": 5,
+            "row": 6,
+            "width": 2,
+            "height": 4
+          },
+          "linkedEntityGuids": [
+            "MzE1NTY1fFZJWnxEQVNIQk9BUkR8MjAwNTIxODY"
+          ],
+          "visualization": {
+            "id": "viz.table"
+          },
+          "rawConfiguration": {
+            "facet": {
+              "showOtherSeries": false
+            },
+            "nrqlQueries": [
+              {
+                "accountIds": [
+                  yyyyy
+                ],
+                "query": "FROM Metric select uniqueCount(container_label_com_docker_swarm_service_name) as '# of Services'  facet container_label_com_docker_swarm_service_name"
+              }
+            ],
+            "platformOptions": {
+              "ignoreTimeRange": false
+            }
+          }
+        },
+        {
+          "title": "Filter Tasks",
+          "layout": {
+            "column": 7,
+            "row": 6,
+            "width": 3,
+            "height": 4
+          },
+          "linkedEntityGuids": [
+            "MzE1NTY1fFZJWnxEQVNIQk9BUkR8MjAwNTIxODY"
+          ],
+          "visualization": {
+            "id": "viz.table"
+          },
+          "rawConfiguration": {
+            "facet": {
+              "showOtherSeries": false
+            },
+            "nrqlQueries": [
+              {
+                "accountIds": [
+                  yyyyy
+                ],
+                "query": "FROM Metric select uniqueCount(container_label_com_docker_swarm_task_name) as '# of Tasks'  facet container_label_com_docker_swarm_task_name limit max"
+              }
+            ],
+            "platformOptions": {
+              "ignoreTimeRange": false
+            }
+          }
+        },
+        {
+          "title": "Filter Id's",
+          "layout": {
+            "column": 10,
+            "row": 6,
+            "width": 3,
+            "height": 4
+          },
+          "linkedEntityGuids": [
+            "MzE1NTY1fFZJWnxEQVNIQk9BUkR8MjAwNTIxODY"
+          ],
+          "visualization": {
+            "id": "viz.table"
+          },
+          "rawConfiguration": {
+            "facet": {
+              "showOtherSeries": false
+            },
+            "nrqlQueries": [
+              {
+                "accountIds": [
+                  yyyyy
+                ],
+                "query": "FROM Metric select uniqueCount(id) as '# of Ids'  where prometheus_server = 'prometheus-stage-cluster'  facet id limit max"
+              }
+            ],
+            "platformOptions": {
+              "ignoreTimeRange": false
+            }
+          }
+        },
+        {
+          "title": "# of Tasks per StackNamespace",
+          "layout": {
+            "column": 1,
+            "row": 7,
+            "width": 3,
+            "height": 3
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.stacked-bar"
+          },
+          "rawConfiguration": {
+            "facet": {
+              "showOtherSeries": false
+            },
+            "legend": {
+              "enabled": true
+            },
+            "nrqlQueries": [
+              {
+                "accountIds": [
+                  yyyyy
+                ],
+                "query": "FROM Metric select uniqueCount(container_label_com_docker_swarm_task_name)  where prometheus_server = 'prometheus-stage-cluster' and metricName = 'container_last_seen' facet container_label_com_docker_stack_namespace limit max TIMESERIES "
+              }
+            ],
+            "platformOptions": {
+              "ignoreTimeRange": false
+            }
+          }
+        },
+        {
+          "title": "",
+          "layout": {
+            "column": 1,
+            "row": 10,
+            "width": 12,
+            "height": 1
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.markdown"
+          },
+          "rawConfiguration": {
+            "text": "| METRICS - CPU & MEMORY |\n| :-: |"
+          }
+        },
+        {
+          "title": "CPU Usage(Service-Top10)",
+          "layout": {
+            "column": 1,
+            "row": 11,
+            "width": 2,
+            "height": 4
+          },
+          "linkedEntityGuids": [
+            "MzE1NTY1fFZJWnxEQVNIQk9BUkR8MjAwNTIxODY"
+          ],
+          "visualization": {
+            "id": "viz.bar"
+          },
+          "rawConfiguration": {
+            "facet": {
+              "showOtherSeries": false
+            },
+            "nrqlQueries": [
+              {
+                "accountIds": [
+                  yyyyy
+                ],
+                "query": "FROM Metric SELECT rate(sum(container_cpu_usage_seconds_total), 1 seconds) \nwhere  metricName='container_cpu_usage_seconds_total' and name not like '%stage%'   since 5 minutes ago    facet container_label_com_docker_swarm_service_name "
+              }
+            ],
+            "platformOptions": {
+              "ignoreTimeRange": false
+            }
+          }
+        },
+        {
+          "title": "CPU Usage(Service)",
+          "layout": {
+            "column": 3,
+            "row": 11,
+            "width": 4,
+            "height": 4
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.line"
+          },
+          "rawConfiguration": {
+            "facet": {
+              "showOtherSeries": false
+            },
+            "legend": {
+              "enabled": true
+            },
+            "nrqlQueries": [
+              {
+                "accountIds": [
+                  yyyyy
+                ],
+                "query": "FROM Metric SELECT rate(sum(container_cpu_usage_seconds_total), 1 seconds) \nwhere  metricName='container_cpu_usage_seconds_total' and name not like '%stage%'   since 1 hour ago  timeseries MAX  facet container_label_com_docker_swarm_service_name limit max"
+              }
+            ],
+            "platformOptions": {
+              "ignoreTimeRange": false
+            },
+            "thresholds": {
+              "isLabelVisible": true
+            },
+            "yAxisLeft": {
+              "zero": true
+            },
+            "yAxisRight": {
+              "zero": true
+            }
+          }
+        },
+        {
+          "title": "CPU Usage(Task - Top10)",
+          "layout": {
+            "column": 7,
+            "row": 11,
+            "width": 2,
+            "height": 4
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.bar"
+          },
+          "rawConfiguration": {
+            "facet": {
+              "showOtherSeries": false
+            },
+            "nrqlQueries": [
+              {
+                "accountIds": [
+                  yyyyy
+                ],
+                "query": "FROM Metric SELECT rate(sum(container_cpu_usage_seconds_total), 1 seconds) \nwhere  metricName='container_cpu_usage_seconds_total' and name not like '%stage%'   since 1 hour ago    facet container_label_com_docker_swarm_task_name "
+              }
+            ],
+            "platformOptions": {
+              "ignoreTimeRange": false
+            }
+          }
+        },
+        {
+          "title": "CPU Usage(Task)",
+          "layout": {
+            "column": 9,
+            "row": 11,
+            "width": 4,
+            "height": 4
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.area"
+          },
+          "rawConfiguration": {
+            "facet": {
+              "showOtherSeries": false
+            },
+            "legend": {
+              "enabled": true
+            },
+            "nrqlQueries": [
+              {
+                "accountIds": [
+                  yyyyy
+                ],
+                "query": "FROM Metric SELECT rate(sum(container_cpu_usage_seconds_total), 1 seconds) \nwhere  metricName='container_cpu_usage_seconds_total' and name not like '%stage%'   since '2024-09-12 14:56:00+0000'  timeseries MAX  facet container_label_com_docker_swarm_task_name limit max UNTIL '2024-09-12 15:09:00+0000'"
+              }
+            ],
+            "platformOptions": {
+              "ignoreTimeRange": false
+            }
+          }
+        },
+        {
+          "title": "Memory Usage(Service - Top10)",
+          "layout": {
+            "column": 1,
+            "row": 15,
+            "width": 2,
+            "height": 4
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.bar"
+          },
+          "rawConfiguration": {
+            "facet": {
+              "showOtherSeries": false
+            },
+            "nrqlQueries": [
+              {
+                "accountIds": [
+                  yyyyy
+                ],
+                "query": "from Metric select  average(container_memory_usage_bytes)\nwhere  metricName='container_memory_usage_bytes'    since 5 minutes ago   facet container_label_com_docker_swarm_service_name \n"
+              }
+            ],
+            "platformOptions": {
+              "ignoreTimeRange": false
+            }
+          }
+        },
+        {
+          "title": "Memory Usage(Service)",
+          "layout": {
+            "column": 3,
+            "row": 15,
+            "width": 4,
+            "height": 4
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.line"
+          },
+          "rawConfiguration": {
+            "facet": {
+              "showOtherSeries": false
+            },
+            "legend": {
+              "enabled": true
+            },
+            "nrqlQueries": [
+              {
+                "accountIds": [
+                  yyyyy
+                ],
+                "query": "from Metric select  average(container_memory_usage_bytes)\nwhere  metricName='container_memory_usage_bytes'    since 1 hour ago  timeseries max facet container_label_com_docker_swarm_service_name limit max \n"
+              }
+            ],
+            "platformOptions": {
+              "ignoreTimeRange": false
+            },
+            "thresholds": {
+              "isLabelVisible": true
+            },
+            "units": {
+              "unit": "BYTES"
+            },
+            "yAxisLeft": {
+              "zero": true
+            },
+            "yAxisRight": {
+              "zero": true
+            }
+          }
+        },
+        {
+          "title": "Memory Usage(Task - Top10)",
+          "layout": {
+            "column": 7,
+            "row": 15,
+            "width": 2,
+            "height": 4
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.bar"
+          },
+          "rawConfiguration": {
+            "facet": {
+              "showOtherSeries": false
+            },
+            "nrqlQueries": [
+              {
+                "accountIds": [
+                  yyyyy
+                ],
+                "query": "from Metric select  average(container_memory_usage_bytes)\nwhere  metricName='container_memory_usage_bytes'    since 5 minutes ago   facet container_label_com_docker_swarm_task_name \n"
+              }
+            ],
+            "platformOptions": {
+              "ignoreTimeRange": false
+            }
+          }
+        },
+        {
+          "title": "Memory Usage(Task)",
+          "layout": {
+            "column": 9,
+            "row": 15,
+            "width": 4,
+            "height": 4
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.area"
+          },
+          "rawConfiguration": {
+            "facet": {
+              "showOtherSeries": false
+            },
+            "legend": {
+              "enabled": true
+            },
+            "nrqlQueries": [
+              {
+                "accountIds": [
+                  yyyyy
+                ],
+                "query": "from Metric select  average(container_memory_usage_bytes)\nwhere  metricName='container_memory_usage_bytes'    since 1 hour ago  timeseries max facet container_label_com_docker_swarm_task_name limit max \n"
+              }
+            ],
+            "platformOptions": {
+              "ignoreTimeRange": false
+            }
+          }
+        },
+        {
+          "title": "",
+          "layout": {
+            "column": 1,
+            "row": 19,
+            "width": 12,
+            "height": 1
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.markdown"
+          },
+          "rawConfiguration": {
+            "text": "| METRICS - NETWORK |\n| :-: |"
+          }
+        },
+        {
+          "title": "Network Received(Service)",
+          "layout": {
+            "column": 1,
+            "row": 20,
+            "width": 6,
+            "height": 4
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.line"
+          },
+          "rawConfiguration": {
+            "facet": {
+              "showOtherSeries": false
+            },
+            "legend": {
+              "enabled": true
+            },
+            "nrqlQueries": [
+              {
+                "accountIds": [
+                  yyyyy
+                ],
+                "query": "from Metric select  average(container_network_receive_bytes_total)\nwhere  metricName='container_network_receive_bytes_total'    since 1 hour ago  timeseries max facet container_label_com_docker_swarm_service_name limit max \n"
+              }
+            ],
+            "platformOptions": {
+              "ignoreTimeRange": false
+            },
+            "thresholds": {
+              "isLabelVisible": true
+            },
+            "units": {
+              "unit": "BYTES"
+            },
+            "yAxisLeft": {
+              "zero": true
+            },
+            "yAxisRight": {
+              "zero": true
+            }
+          }
+        },
+        {
+          "title": "Network Received(Task)",
+          "layout": {
+            "column": 7,
+            "row": 20,
+            "width": 6,
+            "height": 4
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.area"
+          },
+          "rawConfiguration": {
+            "facet": {
+              "showOtherSeries": false
+            },
+            "legend": {
+              "enabled": true
+            },
+            "nrqlQueries": [
+              {
+                "accountIds": [
+                  yyyyy
+                ],
+                "query": "from Metric select  average(container_network_receive_bytes_total)\nwhere  metricName='container_network_receive_bytes_total'    since 1 hour ago  timeseries max facet container_label_com_docker_swarm_task_name limit max \n"
+              }
+            ],
+            "platformOptions": {
+              "ignoreTimeRange": false
+            }
+          }
+        },
+        {
+          "title": "Network Trasmit(Service)",
+          "layout": {
+            "column": 1,
+            "row": 24,
+            "width": 6,
+            "height": 4
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.line"
+          },
+          "rawConfiguration": {
+            "facet": {
+              "showOtherSeries": false
+            },
+            "legend": {
+              "enabled": true
+            },
+            "nrqlQueries": [
+              {
+                "accountIds": [
+                  yyyyy
+                ],
+                "query": "from Metric select  average(container_network_transmit_bytes_total)\nwhere  metricName='container_network_transmit_bytes_total'    since 1 hour ago  timeseries max facet container_label_com_docker_swarm_service_name limit max \n"
+              }
+            ],
+            "platformOptions": {
+              "ignoreTimeRange": false
+            },
+            "thresholds": {
+              "isLabelVisible": true
+            },
+            "units": {
+              "unit": "BYTES"
+            },
+            "yAxisLeft": {
+              "zero": true
+            },
+            "yAxisRight": {
+              "zero": true
+            }
+          }
+        },
+        {
+          "title": "Network Transmit(Task)",
+          "layout": {
+            "column": 7,
+            "row": 24,
+            "width": 6,
+            "height": 4
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.area"
+          },
+          "rawConfiguration": {
+            "facet": {
+              "showOtherSeries": false
+            },
+            "legend": {
+              "enabled": true
+            },
+            "nrqlQueries": [
+              {
+                "accountIds": [
+                  yyyyy
+                ],
+                "query": "from Metric select  average(container_network_transmit_bytes_total)\nwhere  metricName='container_network_transmit_bytes_total'    since 1 hour ago  timeseries max facet container_label_com_docker_swarm_task_name limit max \n"
+              }
+            ],
+            "platformOptions": {
+              "ignoreTimeRange": false
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "variables": [
+    {
+      "name": "node",
+      "items": null,
+      "defaultValues": [
+        {
+          "value": {
+            "string": "*"
+          }
+        }
+      ],
+      "nrqlQuery": {
+        "accountIds": [
+          yyyyy
+        ],
+        "query": "FROM Metric SELECT uniques(container_label_com_docker_swarm_node_id) WHERE  metricName LIKE 'container_cpu%' since 1 day ago"
+      },
+      "options": {
+        "ignoreTimeRange": true,
+        "excluded": false
+      },
+      "title": "node",
+      "type": "NRQL",
+      "isMultiSelection": true,
+      "replacementStrategy": "STRING"
+    },
+    {
+      "name": "service",
+      "items": null,
+      "defaultValues": [
+        {
+          "value": {
+            "string": "*"
+          }
+        }
+      ],
+      "nrqlQuery": {
+        "accountIds": [
+          yyyyy
+        ],
+        "query": "FROM Metric SELECT uniques(container_label_com_docker_swarm_service_name) WHERE  metricName LIKE 'container_cpu%' since 1 day ago\n"
+      },
+      "options": {
+        "ignoreTimeRange": true,
+        "excluded": false
+      },
+      "title": "service",
+      "type": "NRQL",
+      "isMultiSelection": true,
+      "replacementStrategy": "STRING"
+    },
+    {
+      "name": "task",
+      "items": null,
+      "defaultValues": [
+        {
+          "value": {
+            "string": "*"
+          }
+        }
+      ],
+      "nrqlQuery": {
+        "accountIds": [
+          yyyyy
+        ],
+        "query": "FROM Metric SELECT uniques(container_label_com_docker_swarm_task_name) WHERE  metricName LIKE 'container_cpu%' since 1 day ago\n"
+      },
+      "options": {
+        "ignoreTimeRange": true,
+        "excluded": false
+      },
+      "title": "task",
+      "type": "NRQL",
+      "isMultiSelection": true,
+      "replacementStrategy": "STRING"
+    },
+    {
+      "name": "id",
+      "items": null,
+      "defaultValues": [
+        {
+          "value": {
+            "string": "*"
+          }
+        }
+      ],
+      "nrqlQuery": {
+        "accountIds": [
+          yyyyy
+        ],
+        "query": "FROM Metric SELECT uniques(id) WHERE  metricName LIKE 'container_cpu%' since 1 day ago\n"
+      },
+      "options": {
+        "ignoreTimeRange": true,
+        "excluded": false
+      },
+      "title": "id",
+      "type": "NRQL",
+      "isMultiSelection": true,
+      "replacementStrategy": "STRING"
+    }
+  ]
+}
